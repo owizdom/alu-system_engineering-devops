@@ -1,0 +1,2 @@
+#!/usr/bin/env bash
+ufw allow proto tcp to any port 22,80,443
