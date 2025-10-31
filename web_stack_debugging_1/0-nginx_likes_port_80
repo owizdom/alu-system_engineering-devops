@@ -1,0 +1,3 @@
+#!/usr/bin/env bash
+rm /etc/nginx/sites-enable/default
+ln -s /etc/nginx/sites-available/default /etc/nginx/sites-enable/
