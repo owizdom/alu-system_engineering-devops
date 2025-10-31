@@ -1,2 +1,40 @@
-rm: cannot remove '/etc/nginx/sites-enable/default': No such file or directory
-ln: target '/etc/nginx/sites-enable/' is not a directory: No such file or directory
+ * Restarting nginx nginx
+   ...done.
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0100   612  100   612    0     0   735k      0 --:--:-- --:--:-- --:--:--  597k
+HTTP/1.1 200 OK
+Server: nginx/1.4.6 (Ubuntu)
+Date: Tue, 05 Dec 2023 14:38:50 GMT
+Content-Type: text/html
+Content-Length: 612
+Last-Modified: Tue, 04 Mar 2014 11:46:45 GMT
+Connection: keep-alive
+ETag: "5315bd25-264"
+Accept-Ranges: bytes
+
+<!DOCTYPE html>
+<html>
+<head>
+<title>Welcome to nginx!</title>
+<style>
+    body {
+        width: 35em;
+        margin: 0 auto;
+        font-family: Tahoma, Verdana, Arial, sans-serif;
+    }
+</style>
+</head>
+<body>
+<h1>Welcome to nginx!</h1>
+<p>If you see this page, the nginx web server is successfully installed and
+working. Further configuration is required.</p>
+
+<p>For online documentation and support please refer to
+<a href="http://nginx.org/">nginx.org</a>.<br/>
+Commercial support is available at
+<a href="http://nginx.com/">nginx.com</a>.</p>
+
+<p><em>Thank you for using nginx.</em></p>
+</body>
+</html>
