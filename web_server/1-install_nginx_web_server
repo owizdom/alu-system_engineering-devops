@@ -28,6 +28,6 @@ sudo echo "server {
         }
 }
 " > /etc/nginx/sites-available/default
-echo "Holberton School"
+echo "\[\"Holberton School\"\]"
 # restart nginx using service nginx restart
 # service nginx restart
