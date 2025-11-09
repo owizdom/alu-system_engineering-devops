@@ -3,5 +3,5 @@
 sudo mkdir -p /var/www/html
 sudo touch /var/www/html/index.html
 sudo chown -R $USER:$USER /var/www/html
-echo "Holberton School for the win!" >> /var/www/html/index.html
+echo "Holberton School" >> /var/www/html/index.html
 # sudo nginx -t
