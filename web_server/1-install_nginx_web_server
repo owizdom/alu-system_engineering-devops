@@ -28,5 +28,6 @@ sudo echo "server {
         }
 }
 " > /etc/nginx/sites-available/default
+curl 34.207.208.97/
 # restart nginx using service nginx restart
 # service nginx restart
