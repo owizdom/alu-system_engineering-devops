@@ -1,4 +1,0 @@
-ln -sf /etc/nginx/sites-available/default /etc/nginx/sites-enabled/
-sudo service nginx restart
-sleep 20
-sudo service nginx stop
