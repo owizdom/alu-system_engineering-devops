@@ -5,20 +5,13 @@
 apt-get -y update
 apt-get install -y nginx
 
-# create an index.html file that will have the Holberton School string
-sudo touch /var/www/html/index.html
-# Change owner ship of the default domain that would run
-# if no arguements is given
-sudo chown -R $USER:$USER /var/www/html
-# redirect the output of holberton to index.html
-echo "Holberton School" >> /var/www/html/index.html
-# configure the server default
+# configuration for default server or building server block
 printf %s "server {
         listen 80 default_server;
         listen [::]:80 default_server;
 
-        root /var/www/html/;
-	index index.html index.htm index.nginx-debian.html;
+        root /etc/nginx/html;
+        index index.html;
 
         server_name _;
 
@@ -26,7 +19,15 @@ printf %s "server {
                 try_files $uri $uri/ =404;
         }
 }
-" > /etc/nginx/sites-available/default
-# restart nginc without systemct1 using service nginx restart
+"
+ > /etc/nginx/sites-available/default
+# enabling server block
+sudo ln -s /etc/nginx/sites-available/default /etc/nginx/sites-enabled/
+# create the default site file directory for your site
+sudo mkdir -p /etc/nginx/html
+# change ownership to default user
+sudo chown -R $USER:$USER /etc/nginx/html
+# echo string to default webpage
+echo "Holberton School" > /etc/nginx/html/index.html
+# restart nginx using service nginx restart
 service nginx restart
-# sudo nginx -t
