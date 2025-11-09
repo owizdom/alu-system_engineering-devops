@@ -14,8 +14,11 @@ printf %s "server {
     root   /etc/nginx/html;
     index  index.html index.htm;
 
+    location / {
+	try_files \$uri \$uri/ =404;
+    }
     location /redirect_me {
-        return 301 http://cprogramming.tech;
+        return 301 https://www.youtube.com/watch?v=7VAI73roXaY&list=PPSV;
     }
 }" > /etc/nginx/sites-available/default
 
