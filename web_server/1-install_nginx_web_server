@@ -1,16 +1,23 @@
-#!/usr/bin/env bash
-# Web servers are the piece of software generating and serving HTML pages, let’s install one!
+ervers are the piece of software generating and serving HTML pages, let’s install one!
 
 # install nginx
-apt-get -y update
-apt-get install -y nginx
+sudo apt-get -y update
+sudo apt-get install -y nginx
 
-# configuration for default server or building server block
-printf %s "server {
+# create the default site file directory for your site
+sudo mkdir -p /var/www/html
+# change ownership to default user
+sudo chown -R $USER:$USER /var/www/html
+# echo string to default webpage
+sudo echo "Holberton School" > /var/www/html/index.html
+# give sites-available the current user ownership
+sudo chown -R $USER:$USER /etc/nginx/sites-available/
+# configuration of server block
+sudo echo "server {
         listen 80 default_server;
         listen [::]:80 default_server;
 
-        root /etc/nginx/html;
+        root /var/www/html/;
         index index.html;
 
         server_name _;
@@ -19,15 +26,6 @@ printf %s "server {
                 try_files \$uri \$uri/ =404;
         }
 }
-"
- > /etc/nginx/sites-available/default
-# enabling server block
-sudo ln -s /etc/nginx/sites-available/default /etc/nginx/sites-enabled/
-# create the default site file directory for your site
-sudo mkdir -p /etc/nginx/html
-# change ownership to default user
-sudo chown -R $USER:$USER /etc/nginx/html
-# echo string to default webpage
-echo "Holberton School" > /etc/nginx/html/index.html
+" > /etc/nginx/sites-available/default
 # restart nginx using service nginx restart
-service nginx restart
+# service nginx restart
