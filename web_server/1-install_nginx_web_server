@@ -1,33 +1,21 @@
 #!/usr/bin/env bash
-# servers are the piece of software generating and serving HTML pages, let’s install one!
+# Installs Nginx with the following configurations:
+#+    Listens on port 80.
+#+    Returns a page containing "Holberton School" when queried
+#++    at the root with a curl GET request.
 
-# install nginx
-sudo apt-get -y update
-sudo apt-get install -y nginx
+apt-get update
+apt-get install -y nginx
 
-# create the default site file directory for your site
-sudo mkdir -p /var/www/html
-# change ownership to default user
-sudo chown -R $USER:$USER /var/www/html
-# echo string to default webpage
-sudo echo "Holberton School" > /var/www/html/index.html
-# give sites-available the current user ownership
-sudo chown -R $USER:$USER /etc/nginx/sites-available/
-# configuration of server block
-sudo echo "server {
-        listen 80 default_server;
-        listen [::]:80 default_server;
-
-        root /var/www/html/;
-        index index.html;
-
-        server_name _;
-
-        location / {
-                try_files \$uri \$uri/ =404;
-        }
+mkdir /etc/nginx/html
+touch /etc/nginx/html/index.html
+echo "Holberton School" > /etc/nginx/html/index.html
+printf %s "server {
+     listen      80 default_server;
+     listen      [::]:80 default_server;
+     root        /etc/nginx/html;
+     index       index.html index.htm;
 }
 " > /etc/nginx/sites-available/default
-echo "\[\"Holberton School\"\]"
-# restart nginx using service nginx restart
-# service nginx restart
+
+service nginx restart
