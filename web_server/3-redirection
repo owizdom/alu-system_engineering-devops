@@ -5,21 +5,22 @@
 apt-get update
 apt-get install -y nginx
 
-mkdir /etc/nginx/html
-touch /etc/nginx/html/index.html
-echo "Holberton School" > /etc/nginx/html/index.html
-printf %s "server {
-    listen 80;
-    listen [::]:80 default_server;
-    root   /etc/nginx/html;
-    index  index.html index.htm;
+mkdir -p /var/www/html
+echo "Holberton School for the win!" > /var/www/html/index.html
 
+printf %s "server {
+    listen 80 default_server;
+    listen [::]:80 default_server;
+    root /var/www/html;
+    index index.html index.htm;
+    server_name _;
     location / {
-	try_files \$uri \$uri/ =404;
+        try_files \$uri \$uri/ =404;
     }
     location /redirect_me {
-        return 301 https://www.youtube.com/watch?v=7VAI73roXaY&list=PPSV;
+        return 301 https://www.youtube.com/watch?v=QH2-TGUlwu4;
     }
-}" > /etc/nginx/sites-available/default
+}
+" > /etc/nginx/sites-available/default
 
 service nginx restart
