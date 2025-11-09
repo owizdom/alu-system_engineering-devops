@@ -3,17 +3,15 @@
 #+    Enables management via the init script.
 #+    Distributes requests using a round-robin algorithm.
 
-apt-get install -y software-properties-common
-add-apt-repository -y ppa:vbernat/haproxy-1.8
 apt-get update
-apt-get install -y haproxy=1.8.\*
+apt-get install -y haproxy
 
 echo "ENABLED=1" >> /etc/default/haproxy
 mv /etc/haproxy/haproxy.cfg{,.original}
 touch /etc/haproxy/haproxy.cfg
 
 printf %s "global
-    log 127.0.0.1 local0 notice
+    log /dev/log local0
     maxconn 2000
     user haproxy
     group haproxy
