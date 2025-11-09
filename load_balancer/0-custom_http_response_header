@@ -15,13 +15,15 @@ mkdir -p /var/www/html
 echo "Holberton School for the win!" > /var/www/html/index.html
 echo "Ceci n'est pas une page" > /var/www/html/404.html
 
+HOSTNAME=$(hostname)
+
 printf %s "server {
     listen 80 default_server;
     listen [::]:80 default_server;
     root /var/www/html;
     index index.html index.htm;
     server_name _;
-    add_header X-Served-By \$hostname always;
+    add_header X-Served-By $HOSTNAME always;
     location / {
         try_files \$uri \$uri/ =404;
     }
