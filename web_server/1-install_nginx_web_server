@@ -1,10 +1,32 @@
 #!/usr/bin/env bash
 # Web servers are the piece of software generating and serving HTML pages, let’s install one!
+
+# install nginx
 apt-get -y update
 apt-get install -y nginx
 
-sudo mkdir -p /var/www/html
+# create an index.html file that will have the Holberton School string
 sudo touch /var/www/html/index.html
+# Change owner ship of the default domain that would run
+# if no arguements is given
 sudo chown -R $USER:$USER /var/www/html
+# redirect the output of holberton to index.html
 echo "Holberton School" >> /var/www/html/index.html
+# configure the server default
+printf %s "server {
+        listen 80 default_server;
+        listen [::]:80 default_server;
+
+        root /var/www/html/;
+	index index.html index.htm index.nginx-debian.html;
+
+        server_name _;
+
+        location / {
+                try_files $uri $uri/ =404;
+        }
+}
+" > /etc/nginx/sites-available/default
+# restart nginc without systemct1 using service nginx restart
+service nginx restart
 # sudo nginx -t
