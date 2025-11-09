@@ -6,11 +6,11 @@ sudo apt-get -y update
 sudo apt-get install -y nginx
 
 # create the default site file directory for your site
-sudo mkdir -p /etc/nginx/html
+sudo mkdir -p /var/www/html
 # change ownership to default user
-sudo chown -R $USER:$USER /etc/nginx/html
+sudo chown -R $USER:$USER /var/www/html
 # echo string to default webpage
-sudo echo "Holberton School" > /etc/nginx/html/index.html
+sudo echo "Holberton School" > /var/www/html/index.html
 # give sites-available the current user ownership
 sudo chown -R $USER:$USER /etc/nginx/sites-available/
 # configuration of server block
@@ -18,7 +18,7 @@ sudo echo "server {
         listen 80 default_server;
         listen [::]:80 default_server;
 
-        root /etc/nginx/html/;
+        root /var/www/html/;
         index index.html;
 
         server_name _;
